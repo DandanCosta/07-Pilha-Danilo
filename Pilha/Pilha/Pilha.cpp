@@ -14,6 +14,7 @@ void menu();
 void inicializar();
 void pop();
 void push();
+void exibir();
 //--------------------------
 
 
@@ -25,14 +26,15 @@ int main()
 void menu()
 {
 	int op = 0;
-	while (op != 4) {
+	while (op != 5) {
 		system("cls"); // somente no windows
 		cout << "Menu Pilha";
 		cout << endl << endl;
 		cout << "1 - Inicializar Pilha \n";
 		cout << "2 - Inserir elemento (Push) \n";
 		cout << "3 - Remover elementos (Pop) \n";
-		cout << "4 - Sair \n";
+		cout << "4 - Exibir a pilha \n";
+		cout << "5 - Sair \n";
 
 
 		cout << "Opcao: ";
@@ -46,7 +48,9 @@ void menu()
 			break;
 		case 3: pop();
 			break;
-		case 4:
+		case 4: exibir();
+			break;
+		case 5:
 			return;
 		default:
 			break;
@@ -106,5 +110,21 @@ void pop()
 	topo = topo->ant;
 	free(aux);
 
+}
+
+void exibir() {
+
+	
+	if (topo == NULL) {
+		cout << "Pilha vazia \n";
+		return;
+	}
+	
+	NO* aux = topo;
+	cout << "Conteudo da pilha: " << endl;
+	while (aux != NULL) {
+		cout << aux->valor << endl;
+		aux = aux->ant;
+	}
 }
 
